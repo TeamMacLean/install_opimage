@@ -12,7 +12,7 @@ netstuff :
 	sudo apt-get install samba
 
 matplotlib :
-	sudo apt-get python-matplotlib
+	sudo apt-get install python-matplotlib
 
 scipy : matplotlib
 	sudo apt-get install python-scipy
