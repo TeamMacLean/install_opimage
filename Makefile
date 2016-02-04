@@ -1,4 +1,4 @@
-.PHONY : update matplotlib scipy scikit-image opimage access_point
+.PHONY : update netstuff matplotlib scipy scikit-image opimage access_point
 update :
 		sudo apt-get update
 
@@ -6,8 +6,12 @@ access_point :
 	cd Desktop
 	git clone git://github.com/TeamMacLean/make_ap
 	cd make_ap
-	sudo bash make_access_point.sh
+	sudo bash auto_make_access_point.sh
 
+netstuff :
+	sudo apt-get install netatalk
+	sudo apt-get install samba
+	
 matplotlib :
 	sudo apt-get python-matplotlib
 
@@ -29,7 +33,7 @@ opimage_interface : opimage
 
 ap : update access_point
 
-software : matplotlib scipy scikit-image opimage opimage_interface
+software : netstuff matplotlib scipy scikit-image opimage opimage_interface
 
 clean :
   rm -rf make_ap opimage opimage_interface

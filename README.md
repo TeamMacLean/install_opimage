@@ -55,7 +55,7 @@ We'll get the automatic script from github and run that.
 2.  Then type `cd install_opimage`
 3.  Then type `make ap`
 
-This will setup the wireless access point. The machine will need rebooting at this point, so when it starts again, re-open the terminal and
+This will setup the wireless access point. The machine will need rebooting at this point, so do that and when it starts again, re-open the terminal and
 
 1.  Type `cd install_opimage`
 2.  Then type `make software`
