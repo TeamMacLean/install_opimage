@@ -5,8 +5,7 @@ update :
 
 access_point :
 	git clone git://github.com/TeamMacLean/make_ap
-	cd make_ap; && \
-	sudo bash auto_make_access_point.sh
+	cd make_ap; sudo bash auto_make_access_point.sh
 
 netstuff :
 	sudo apt-get install netatalk
@@ -23,13 +22,11 @@ scikit-image : scipy
 
 opimage : scikit-image
 	git clone git://github.com/TeamMacLean/opimage.git
-	cd opimage; && \
-	sudo python setup.py develop
+	cd opimage; sudo python setup.py develop
 
 opimage_interface : opimage
 	git clone git://github.com/TeamMacLean/opimage_interface.git
-	cd opimage_interface; && \
-	sudo chmod 775 cgi-bin/*
+	cd opimage_interface; sudo chmod 775 cgi-bin/*
 
 ap : update access_point
 
