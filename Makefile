@@ -3,7 +3,6 @@ update :
 		sudo apt-get update
 
 access_point :
-	cd Desktop
 	git clone git://github.com/TeamMacLean/make_ap
 	cd make_ap
 	sudo bash auto_make_access_point.sh
@@ -11,7 +10,7 @@ access_point :
 netstuff :
 	sudo apt-get install netatalk
 	sudo apt-get install samba
-	
+
 matplotlib :
 	sudo apt-get python-matplotlib
 
