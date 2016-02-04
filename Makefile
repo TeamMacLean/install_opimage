@@ -1,4 +1,5 @@
 .PHONY : update netstuff matplotlib scipy scikit-image opimage access_point
+
 update :
 		sudo apt-get update
 
@@ -33,6 +34,3 @@ opimage_interface : opimage
 ap : update access_point
 
 software : netstuff matplotlib scipy scikit-image opimage opimage_interface
-
-clean :
-  rm -rf make_ap opimage opimage_interface
