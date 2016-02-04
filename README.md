@@ -50,6 +50,7 @@ There are two options at this stage, an automatic build script that makes plenty
 ## Automatic Method
 
 We'll get the automatic script from github and run that.
+
 1.  In the terminal window, type `git://github.com/TeamMacLean/install_opimage`
 2.  Then type `cd install_opimage`
 3.  Then type `make ap`
