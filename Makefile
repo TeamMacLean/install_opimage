@@ -1,4 +1,4 @@
-.PHONY : update netstuff matplotlib scipy scikit-image opimage access_point
+.PHONY : update netstuff matplotlib scipy scikit-image opimage access_point remove_folders
 
 update :
 		sudo apt-get update
@@ -27,7 +27,12 @@ opimage : scikit-image
 opimage_interface : opimage
 	git clone git://github.com/TeamMacLean/opimage_interface.git
 	cd opimage_interface; sudo chmod 775 cgi-bin/*
+	mv opimage_interface ~/Desktop
+
+remove_folders :
+	rm -rf opimage/
+	rm -rf make_ap/
 
 ap : update access_point
 
-software : netstuff matplotlib scipy scikit-image opimage opimage_interface
+software : netstuff matplotlib scipy scikit-image opimage opimage_interface remove_folders
