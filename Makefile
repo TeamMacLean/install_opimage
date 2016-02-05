@@ -30,7 +30,6 @@ opimage_interface : opimage
 	mv opimage_interface ~/Desktop
 
 remove_folders :
-	sudo rm -rf opimage/
 	sudo rm -rf make_ap/
 
 clean : remove_folders
