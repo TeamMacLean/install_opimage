@@ -20,9 +20,13 @@ scipy : matplotlib
 scikit-image : scipy
 	sudo pip install scikit-image
 
-opimage : scikit-image
+opimage : scikit-image opimage_things
 	git clone git://github.com/TeamMacLean/opimage.git
 	cd opimage; sudo python setup.py develop
+
+opimage_things :
+	git clone git://github.com/TeamMacLean/opimage_things
+	cd opimage_things; sudo python setup.py develop
 
 opimage_interface : opimage
 	git clone git://github.com/TeamMacLean/opimage_interface.git
