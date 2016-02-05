@@ -38,9 +38,9 @@ remove_folders :
 
 clean :
 	sudo rm -rf make_ap
-  sudo rm -rf opimage
+	sudo rm -rf opimage
 	sudo rm -rf opimage_things
-	
+
 ap : update access_point
 
 software : netstuff matplotlib scipy scikit-image opimage opimage_interface remove_folders
