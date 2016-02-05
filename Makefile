@@ -18,7 +18,7 @@ scipy : matplotlib
 	sudo apt-get install python-scipy
 
 scikit-image : scipy
-	sudo pip install -U scikit-image
+	sudo pip install scikit-image
 
 opimage : scikit-image
 	git clone git://github.com/TeamMacLean/opimage.git
