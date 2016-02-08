@@ -17,7 +17,6 @@ You will need:
 ### Starting up the Pi
 
 1.  You will first need to put an operating system on the SD card, we will use Raspbian. The whole process is described at the Raspberry Pi site [https://www.raspberrypi.org/documentation/installation/installing-images/](here), so please follow those instructions. Make sure to flash the SD card with the `JESSIE` version of Raspbian (`2015-11-21`).
-
 2.  Now plug in the monitor, keyboard, PiNoir camera and both WiFi dongles to the Pi. Then plug in the power supply, the Pi should start up.
 
 ### Expand the filesystem
@@ -55,7 +54,25 @@ We'll get the automatic script from github and run that.
 2.  Then type `cd install_opimage`
 3.  Then type `make ap`
 
-This will setup the wireless access point. The machine will need rebooting at this point, so do that and when it starts again, re-open the terminal and
+This will setup the wireless access point. You need to answer some questions about your local network. If you don't know the answers, use the suggested defaults and keep your fingers crossed. Here are the questions you'll be asked with suggested answers (we will try to make this step automatic in the future):
+
+1.  Qn 0) `Do you accept above terms?` - press `y` to accept.
+2.  Qn 1) `Please provide your new SSID to be broadcasted by RPi` - The name of the network your Pi will create, try `TheRPi`
+3.  Qn 2) `Please provide password for your new wireless network (8-63 characters)` -  The password to access this new network, try `raspberry`
+4.  Qn 3) This one is dependent on the hardware of your dongles, it may not be asked - `Some of the WiFi chipset require special version of hostapd. Please answer yes if you want to have different version of hostapd downloaded.` type `yes` to answer yes.
+5.  Qn 4) `You have more than one wlan interface. Please select the interface to become AP` - use `wlan1` so __PRESS 2__ **dont type wlan1**
+6.  Qn 5) `Please provide network interface that will be used as WAN connection` - if you intend to use a wireless connection to connect to the internet, type `wlan0` - it is possible to setup a wired connection here by typing `eth0` if you wish.
+7.  Qn 6) `Please provide your new AP network (i.e. 192.168.10.X). Remember to put X at the end!!!` - this is the address of the subnet your Pi will work on. Assuming that there aren't already machines with this range of IP's locally type - `10.10.10.X`
+8.  Qn 7) You will see a summary of the information provided, type `Y` to confirm
+9.  Qn 8) `Would you like to start AP on boot? (y/n)` - type `y` to agree
+
+
+
+
+
+
+
+Once done, the Pi will need rebooting, so do that and when it starts again re-open the terminal and
 
 1.  Type `cd install_opimage`
 2.  Then type `make software`
