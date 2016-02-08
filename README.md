@@ -82,6 +82,7 @@ Once this step is done, you should have a folder on your Desktop called `opimage
 
 ## Connect to Pi over its wireless and start the interface
 Once the Pi is in its work place, plugged in and the storage is connected to the Pi, use your laptop to make sure you can see the 
+
 1.  Connect to the `TheRpi` network using your laptop, and the password chosen above (`raspberry`)
 2.  Open a terminal on your laptop and log on using `ssh pi@10.10.10.1` (you are connecting as the `pi` default user so the password is `raspberry` no matter what you called the wireless network)
 3.  Type `cd /media/pi` - this is the place on the filesystem to which Pi's mount external storage media.
@@ -96,12 +97,15 @@ The interface should start on port 8000. You can reach the web interface by goin
 You can safely close the terminal windows and disconnect from the Pi, the server will continue to run. 
 
 ## Re-connect to a running Pi over its wireless
+
 1.  Connect to the `TheRpi` network using your laptop, and the password chosen above (`raspberry`)
 2.  You can reach the web interface by going to the address `http://10.10.10.1:8000` on the laptop
 
 ## Checking run progress in the interface
+
 1. Once you have started image collection, you can see progress by clicking a job's work folder link. You'll get a listing of what is in that folder - each timepoint should have a `.jpg` preview and a larger `.data` raw file.
 
 ## Stopping jobs in the interface
+
 1.  Clicking stop will kill the job, but wont remove it from the interface listing - it will show up as `dead`
 2.  Clicking remove will delete a job from the interface listing but **will not delete any files from the storage**
