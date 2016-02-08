@@ -7,7 +7,7 @@ You will need:
 1.  Raspberry Pi 2 Model B
 2.  64 Gb memory card
 3.  External HD / USB Stick
-4.  2x WiFi dongles (preferably of chipset xxx)
+4.  2x WiFi dongles
 5.  HDMI monitor and cable
 6.  USB mouse and keyboard
 7.  Some other computer and a memory card reader
@@ -44,10 +44,11 @@ and the software should update automatically.
 The Pi should now be in its basic state and we're ready to go ahead with the stuff for `Open Pi Image`.
 
 ## The software
-There are two options at this stage, an automatic build script that makes plenty of assumptions about your locale but _should_ be fine, and a manual walkthrough where you can configure things a bit more.
 
-## Automatic Method
+Now we need to setup the wireless software to access the Pi remotely and the `Open Pi Image software` to actually do stuff!
 
+
+### Setup wireless access point
 We'll get the automatic script from github and run that.
 
 1.  In the terminal window, type `git clone git://github.com/TeamMacLean/install_opimage`
@@ -67,67 +68,40 @@ This will setup the wireless access point. You need to answer some questions abo
 9.  Qn 8) `Would you like to start AP on boot? (y/n)` - type `y` to agree
 
 
+Once done, the Pi will need rebooting, so do that and when it starts again check all went well,  use a phone or laptop to check local WiFi networks, you should see one called `TheRpi` (or whatever you called it in Qn 1, above). If it is there you can carry on with installing `Open Pi Image`
 
-
-
-
-
-Once done, the Pi will need rebooting, so do that and when it starts again re-open the terminal and
+### Setup `Open Pi Image` and dependencies
+Re-open the terminal and
 
 1.  Type `cd install_opimage`
 2.  Then type `make software`
 
-The  download and setup process should now begin, there is a lot to do so it will take a long time.
+The  `opimage` setup process should now begin, there is a lot to do so it will take a long time (~ 1hr, and you will need to confirm some steps so check at intervals).
 
+Once this step is done, you should have a folder on your Desktop called `opimage_interface`. Attach an external storage device (like a USB stick or external HD, and drag the `opimage_interface` folder to that. The Pi is now ready to be disconnected from your keyboard and monitor and placed _in situ_. Go and do that, you won't need a mouse or keyboard or monitor for the following steps, but you will need a laptop with wifi and the storage device you just used.
 
-## Manual Method.
-Try these steps if the Automatic
-### Make the Pi into an Access Point
+## Connect to Pi over its wireless and start the interface
+Once the Pi is in its work place, plugged in and the storage is connected to the Pi, use your laptop to make sure you can see the 
+1.  Connect to the `TheRpi` network using your laptop, and the password chosen above (`raspberry`)
+2.  Open a terminal on your laptop and log on using `ssh pi@10.10.10.1` (you are connecting as the `pi` default user so the password is `raspberry` no matter what you called the wireless network)
+3.  Type `cd /media/pi` - this is the place on the filesystem to which Pi's mount external storage media.
+4.  Type `ls` - a list of mounted storage devices should appear, hopefully just one. Note the name of yours
+5.  Type `cd <name of your storage device>` 
+6.  Type `ls` - you should see the files and folders on your storage device
+7.  Type `cd opimage_interface`
+8.  Type `nohup python -m CGIHTTPServer 8000 &`
+ 
+The interface should start on port 8000. You can reach the web interface by going to the address `http://10.10.10.1:8000` on the laptop connected to the Pi's wireless.
 
-To make the Pi reachable over the wireless...
-Open Terminal from menu bar
-`cd Desktop`
-`git clone git://github.com/TeamMacLean/make_ap`
-`cd make_ap`
-`sudo bash make_access_point.sh`
+You can safely close the terminal windows and disconnect from the Pi, the server will continue to run. 
 
-Qn 0) accept terms
-Qn 1) SSID - `TheRPi`
-Qn 2) pword - `raspberry`
-qn3 ) which dongle for ap - wlan1 PRESS 2 dont type wlan1
-qn 4) which dongle wifi type wlan0
-qn 5) address for IP `10.10.10.X`
-qn 6) continue `Y`
-qn 7) do you want to start ap? - yes
+## Re-connect to a running Pi over its wireless
+1.  Connect to the `TheRpi` network using your laptop, and the password chosen above (`raspberry`)
+2.  You can reach the web interface by going to the address `http://10.10.10.1:8000` on the laptop
 
-Reboot.
+## Checking run progress in the interface
+1. Once you have started image collection, you can see progress by clicking a job's work folder link. You'll get a listing of what is in that folder - each timepoint should have a `.jpg` preview and a larger `.data` raw file.
 
-## install samba/afp
-
-`sudo apt-get install netatalk`
-`sudo apt-get install samba`
-
-## install opimage_things
-`cd Desktop`
-`git clone git://github.com/TeamMacLean/opimage_things`
-`cd opimage_things`
-`sudo python setup.py develop`
-
-## opimage prerequisites
-`sudo apt-get install python sci-py`
-`sudo pip install -U scikit-image` #45mins!
-
-## opimage itself
-cd Desktop
-`git clone git://github.com/TeamMacLean/opimage`
-`cd opimage`
-`sudo python setup.py develop`
-
-
-##opimage Interface
-`git clone git://github.com/TeamMacLean/opimage_interface`
-
-## connet to Po
-wifi - TheRPi pword raspberry
-
-`nohup python -m CGIHTTPServer 8000 &`
+## Stopping jobs in the interface
+1.  Clicking stop will kill the job, but wont remove it from the interface listing - it will show up as `dead`
+2.  Clicking remove will delete a job from the interface listing but **will not delete any files from the storage**
