@@ -23,9 +23,9 @@ You will need:
 
 3. We will eventually install a lot of software. So let's make the Pi use the whole memory card. Expand the filesystem using the Pi's System Preferences program.
 Go to the `Menu` button at the top left corner of the Pi Deskyop
-  1.  `Menu -> Preferences -> System tab -> Expand filesystem`
-  2.  `Menu -> Preferences -> Interfaces tab -> Camera Enable`
-  3.  `Menu -> Shutdown -> Reboot`
+  1.  `Menu -> Preferences -> Raspberry Pi Configuration -> System tab -> Expand filesystem` - click `ok`
+  2.  `Menu -> Preferences -> Raspberry Pi Configuration -> Interfaces tab -> Camera Enable` - click `ok`, agree to reboot
+  3.  If the system hasn't rebooted automatically - `Menu -> Shutdown -> Reboot`
 
 ### Connect the Pi to the internet.
 
