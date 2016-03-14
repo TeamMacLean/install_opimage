@@ -5,7 +5,7 @@ update :
 
 access_point :
 	git clone git://github.com/TeamMacLean/make_ap
-	cd make_ap; sudo bash auto_ap.sh
+	cd make_ap; sudo bash make_access_point.sh
 
 netstuff :
 	sudo apt-get install netatalk
