@@ -18,6 +18,7 @@ scipy : matplotlib
 	sudo apt-get install python-scipy
 
 scikit-image : scipy
+	sudo apt-get install cython 
 	sudo pip install scikit-image
 
 opimage : scikit-image opimage_things
